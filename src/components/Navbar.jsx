@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ setModalActive }) => {
+const Navbar = ({ setModalActive, skip, setSkip }) => {
   return (
     <nav className="row">
       <div className="nav-wrapper red lighten-1">
@@ -10,7 +10,9 @@ const Navbar = ({ setModalActive }) => {
           <div className="col s12 m4 l5">
             <ul id="nav-mobile" className=" hide-on-med-and-down">
               <li>
-                <a href="/">Random dish</a>
+                <Link onClick={() => setSkip(!skip)} to="/">
+                  Random dish
+                </Link>
               </li>
               <li>
                 <Link to="/favorit-dishes">Favourites</Link>

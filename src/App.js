@@ -60,9 +60,18 @@ const App = () => {
     setSavedDish((prevState) => [newDishes, ...prevState]);
   };
 
+  const removeDishes = (id) => {
+    const shouldRemove = window.confirm(
+      "Вы уверенны, что хотите удалить блюдо?"
+    );
+    if (shouldRemove) {
+      setSavedDish((prevState) => prevState.filter((el) => el.id !== id));
+    }
+  };
+
   return (
     <>
-      <Navbar setModalActive={setModalActive} />
+      <Navbar skip={skip} setSkip={setSkip} setModalActive={setModalActive} />
       <Route
         exact
         path="/"
@@ -77,7 +86,9 @@ const App = () => {
       />
       <Route
         path="/favorit-dishes"
-        render={() => <Favorits savedDish={savedDish} />}
+        render={() => (
+          <Favorits onRemove={removeDishes} savedDish={savedDish} />
+        )}
       />
       <Modal
         createDishes={createDishes}

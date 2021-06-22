@@ -34,12 +34,14 @@ const DishesList = ({
           </div>
           <div className="row card-action">
             <div className="center col s12 m6">
-              <button
-                onClick={() => setSkip(!skip)}
-                className="waves-effect waves-light btn"
-              >
-                skip
-              </button>
+              <Link>
+                <button
+                  onClick={() => setSkip(!skip)}
+                  className="waves-effect waves-light btn"
+                >
+                  skip
+                </button>
+              </Link>
             </div>
             <div className="center col s12 m6">
               <Link

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Favorits = ({ savedDish }) => {
+const Favorits = ({ savedDish, onRemove }) => {
   return (
     <div className="row">
       {savedDish.map((el) => {
@@ -8,6 +8,12 @@ const Favorits = ({ savedDish }) => {
           <div key={el.id} className="card-dish col s12 m4">
             <div className="card">
               <div className="card-image">
+                <i
+                  onClick={() => onRemove(el.id)}
+                  className="material-icons red-text"
+                >
+                  delete
+                </i>
                 <img
                   src={
                     el.strMealThumb
@@ -18,7 +24,9 @@ const Favorits = ({ savedDish }) => {
                   height={400}
                   alt=""
                 />
-                <span className="card-title">{el.strMeal}</span>
+                <div className="content__dishes">
+                  <span className="card-title">{el.strMeal}</span>
+                </div>
               </div>
               <div className="card-content">
                 <p>{el.strInstructions}</p>
